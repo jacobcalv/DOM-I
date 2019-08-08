@@ -9,7 +9,7 @@ const siteContent = {
     "img-src": "img/logo.png"
   },
   "cta": {
-    "h1": "DOM Is Awesome",
+    "h1": "DOM <br> Is <br> Awesome",
     "button": "Get Started",
     "img-src": "img/header-img.png"
   },
@@ -28,7 +28,7 @@ const siteContent = {
   },
   "contact": {
     "contact-h4" : "Contact",
-    "address" : "123 Way 456 Street Somewhere, USA",
+    "address" : "123 Way 456 Street <br> Somewhere, USA",
     "phone" : "1 (888) 888-8888",
     "email" : "sales@greatidea.io",
   },
@@ -41,19 +41,35 @@ const siteContent = {
 
 //NAV BAR
 let logo = document.getElementById("logo-img");
-logo.setAttribute('src', siteContent["nav"]["img-src"])
+logo.setAttribute('src', siteContent["nav"]["img-src"]);
 
 const navItems = document.querySelectorAll('a');
-navItems[0].textContent = 'Services';
-navItems[1].textContent = 'Product';
-navItems[2].textContent = 'Vision';
-navItems[3].textContent = 'Features';
-navItems[4].textContent = 'About';
-navItems[5].textContent = 'Contact';
+navItems[0].textContent = siteContent["nav"]["nav-item-1"];
+navItems[1].textContent = siteContent["nav"]["nav-item-2"];
+navItems[2].textContent = siteContent["nav"]["nav-item-3"];
+navItems[3].textContent = siteContent["nav"]["nav-item-4"];
+navItems[4].textContent = siteContent["nav"]["nav-item-5"];
+navItems[5].textContent = siteContent["nav"]["nav-item-6"];
+
+//APPEND AND PREPEND
+let nav = document.querySelector('nav');
+let frontNav = document.createElement('a');
+let backNav = document.createElement('a');
+backNav.textContent = 'Blog';
+frontNav.textContent = 'Home';
+nav.prepend(frontNav);
+nav.appendChild(backNav);
+
+//COLOR CHANGE
+for(let i=0; i < 6; i++){
+  navItems[i].style.color = 'green';
+};
+frontNav.style.color = 'green';
+backNav.style.color = 'green';
 
 //CTA
 const ctaText = document.querySelector('.cta-text h1');
-ctaText.textContent = siteContent['cta']['h1'];
+ctaText.innerHTML = siteContent['cta']['h1'];
 
 const ctaButton = document.querySelector('.cta-text button');
 ctaButton.innerText = siteContent['cta']['button'];
@@ -89,7 +105,7 @@ ptags[4].textContent = siteContent['main-content']['vision-content'];
 const contacth4 = document.querySelector('.contact h4');
 contacth4.textContent = siteContent['contact']['contact-h4'];
 const contactP = document.querySelectorAll('.contact p');
-contactP[0].textContent = siteContent['contact']['address'];
+contactP[0].innerHTML = siteContent['contact']['address'];
 contactP[1].textContent = siteContent['contact']['phone'];
 contactP[2].textContent = siteContent['contact']['email'];
 
